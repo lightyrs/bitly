@@ -130,6 +130,22 @@ module Bitly
         self.class.default_timeout(timeout) if timeout
       end
 
+      # Search links receiving clicks across bitly by content, language, location, and more
+      #
+      # Options can be:
+      #
+      # [limit]                 the maximum number of links to return
+      # [offset]                which result to start with (defaults to 0)
+      # [query]                 string to query for
+      # [lang]                  favor results in this language (two letter ISO code)
+      # [cities]                show links active in this city (ordered like country-state-city, e.g. us-il-chicago)
+      # [domain]                restrict results to this web domain
+      #
+      def search(opts={})
+        response = get('/search', :query => opts)
+        return response['data']['results']
+      end
+
       private
 
       def arrayize(arg)

@@ -146,6 +146,13 @@ module Bitly
         return response['data']['results']
       end
 
+      # Returns the "social score" for a specified bitly link
+      #
+      def social(link)
+        response = get('/link/social', :query => {:link => link})
+        return response['data']
+      end
+
       private
 
       def arrayize(arg)

@@ -153,6 +153,13 @@ module Bitly
         return response['data']
       end
 
+      # Returns the shares for a specified bitly link
+      #
+      def shares(link)
+        response = get('/link/shares', :query => {:link => link})
+        return response['data']
+      end
+
       private
 
       def arrayize(arg)
